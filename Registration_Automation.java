@@ -84,24 +84,23 @@ public class Registration_Automation
     @Test(priority = 0)//Annotation
     public  void userShouldBeAbletoRegisterSuccessfully()
     {
-        whenClickablemehtodNotWorking(By.xpath("//div[@class=\"header-links\"]/ul[1]/li[1]/a"));// use Clickable Method not working
-        clickable(By.xpath("//div[@class=\"header-links\"]/ul[1]/li[1]/a"));
+        whenClickablemehtodNotWorking(By.xpath("//div[@class=\"header-links\"]/ul[1]/li[1]/a"));//
+        clickable(By.xpath("//div[@class=\"header-links\"]/ul[1]/li[1]/a"));//click on Register button
+        waituntillElmentVisible(By.xpath("//div[@class=\"header-links\"]/ul[1]/li[1]/a"),60);//Add explicite wait
+        clickable(By.xpath("//input[@id=\"gender-female\"]"));//Select radio buttton
         Sleep1(3);
-        //WaitUntilElementClickable(By.xpath("//div[@class=\"header-links\"]/ul[1]/li[1]/a"),60);
-        clickable(By.xpath("//input[@id=\"gender-female\"]"));
-        Sleep1(3);
-        //WaitUntilElementClickable(By.xpath("\"//input[@id=\\\"FirstName\\\"]\""),30);
-        sendKeyElements(By.xpath("//input[@id=\"FirstName\"]"),"Purvi");
-        sendKeyElements(By.xpath("//input[@id=\"LastName\"]"),"Shah");
-        SelectDropDownTextvalue(By.xpath("//select[@name=\"DateOfBirthDay\"]"),"6");
-        selectDropDownIndexValue(By.xpath("//select[@name=\"DateOfBirthMonth\"]"),5);
-        selectDropDownVisibleText(By.xpath("//select[@name=\"DateOfBirthYear\"]"),"1981");
-        String Email="Textx1+"+TimeStamp()+"@gmail.com";
-        sendKeyElements(By.xpath("//input[@id=\"Email\"]"),Email);
-        sendKeyElements(By.xpath("//input[@id=\"Company\"]"),"Xyz ltd.");
-        sendKeyElements(By.xpath("//input[@id=\"Password\"]"),"polo12");
+        waituntillElmentVisible(By.xpath("\"//input[@id=\\\"FirstName\\\"]\""),30);
+        sendKeyElements(By.xpath("//input[@id=\"FirstName\"]"),"Purvi");//send Text to First name Box
+        sendKeyElements(By.xpath("//input[@id=\"LastName\"]"),"Shah");//send Text to last name Box
+        SelectDropDownTextvalue(By.xpath("//select[@name=\"DateOfBirthDay\"]"),"6");//Select birthday by Textvalue
+        selectDropDownIndexValue(By.xpath("//select[@name=\"DateOfBirthMonth\"]"),5);//select birthday by indexvalue
+        selectDropDownVisibleText(By.xpath("//select[@name=\"DateOfBirthYear\"]"),"1981");//select year by VisibleText
+        String date="Textx1+"+TimeStamp()+"@gmail.com";//Date Stamp store in vairable
+        sendKeyElements(By.xpath("//input[@id=\"Email\"]"),date);//send email text in emali box
+        sendKeyElements(By.xpath("//input[@id=\"Company\"]"),"Xyz ltd.");//send Company name
+        sendKeyElements(By.xpath("//input[@id=\"Password\"]"),"polo12");//type password
         sendKeyElements(By.xpath("//input[@id=\"ConfirmPassword\"]"),"polo12");
-        whenClickablemehtodNotWorking(By.xpath("//input[@id=\"Newsletter\"]"));
+        whenClickablemehtodNotWorking(By.xpath("//input[@id=\"Newsletter\"]"));//untick newsletter radiobox
         whenClickablemehtodNotWorking(By.xpath("//input[@id=\"register-button\"]"));
         String expectedText="Your registration completed";
         String actualtext=GetText(By.linkText("Your registration completed"));
